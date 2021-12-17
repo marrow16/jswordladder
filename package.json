@@ -1,0 +1,29 @@
+{
+  "name": "jswordladder",
+  "version": "1.0.0",
+  "description": "Javascript Word Ladder solver",
+  "main": "bin/index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marrow16/jswordladder"
+  },
+  "author": {
+    "name": "Martin Rowlinson",
+    "email": "martin.rowlinson16@gmail.com"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "prompt-sync": "^4.2.0"
+  },
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "mocha": "^8.2.1"
+  },
+  "bin": {
+    "app": "./bin/index.js"
+  }
+}
