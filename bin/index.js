@@ -48,10 +48,10 @@ if (args.length > 1) {
         }
         console.log(`Took ${Math.trunc(took * 100) / 100}ms to determine minimum ladder length of ${maximumLadderLength}`);
     }
-    startTime = performance.now();
     const solver = new Solver(puzzle);
-    took = performance.now() - startTime;
+    startTime = performance.now();
     let solutions = solver.solve(maximumLadderLength);
+    took = performance.now() - startTime;
     if (solutions.length === 0) {
         console.error(`Cannot solve '${first}' to '${second}' in ladder length ${maximumLadderLength} (took ${Math.trunc(took * 100) / 100}ms)`);
         process.exit(-1);
