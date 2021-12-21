@@ -2,25 +2,28 @@ module.exports = class WordDistanceMap {
     #word;
     #distances;
 
-    constructor(word) {
+    constructor(word, maximumLadderLength) {
         this.#word = word;
         this.#distances = new Map();
-        this.#init();
+        this.#init(maximumLadderLength);
     }
 
-    #init() {
+    #init(maximumLadderLength) {
+        let maxDistance = typeof maximumLadderLength === 'number' ? maximumLadderLength : 255;
         let queue = [];
         this.#distances.set(this.#word, 1);
         queue.push(this.#word);
         while (queue.length > 0) {
             let nextWord = queue.shift();
             let distance = this.#distanceGetOrDefault(nextWord) + 1;
-            nextWord.links.forEach(linkedWord => {
-                if (!this.#distances.has(linkedWord)) {
-                    queue.push(linkedWord);
-                    this.#distances.set(linkedWord, distance);
-                }
-            });
+            if (distance <= maxDistance) {
+                nextWord.links.forEach(linkedWord => {
+                    if (!this.#distances.has(linkedWord)) {
+                        queue.push(linkedWord);
+                        this.#distances.set(linkedWord, distance);
+                    }
+                });
+            }
         }
     }
 

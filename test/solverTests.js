@@ -14,7 +14,7 @@ describe('Solver Tests', function () {
         let solver = new Solver(new Puzzle(cat, dog));
         let solutions = solver.solve(4);
         assert.strictEqual(solutions.length, 4);
-        assert.strictEqual(solver.exploredCount, 38);
+        assert.strictEqual(solver.exploredCount, 10);
 
         let midWords = new Map();
         solutions.forEach(solution => {
@@ -42,13 +42,13 @@ describe('Solver Tests', function () {
         let solver = new Solver(new Puzzle(cold, warm));
         let solutions = solver.solve(5);
         assert.strictEqual(solutions.length, 7);
-        assert.strictEqual(solver.exploredCount, 33);
+        assert.strictEqual(solver.exploredCount, 21);
 
         // now do it the other way around..
         solver = new Solver(new Puzzle(warm, cold));
         solutions = solver.solve(5);
         assert.strictEqual(solutions.length, 7);
-        assert.strictEqual(solver.exploredCount, 33);
+        assert.strictEqual(solver.exploredCount, 21);
     })
 
     it('Solve Kata to Java', function () {
