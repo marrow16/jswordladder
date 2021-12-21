@@ -35,4 +35,25 @@ describe('WordDistanceMap', function () {
         assert.isFalse(wordDistanceMap.reachable(endWord, 1));
         assert.isFalse(wordDistanceMap.reachable(endWord, 0));
     })
+
+    it('Cat map limited', function () {
+        let dict = new Dictionary(3);
+        let word = dict.get('cat');
+        assert.isDefined(word);
+
+        let wordDistanceMap = new WordDistanceMap(word, 4);
+        assert.strictEqual(wordDistanceMap.length, 1086);
+
+        let endWord = dict.get('dog');
+        assert.isTrue(wordDistanceMap.contains(endWord));
+        assert.isTrue(wordDistanceMap.reachable(endWord, 5));
+        assert.isTrue(wordDistanceMap.reachable(endWord, 4));
+        assert.isFalse(wordDistanceMap.reachable(endWord, 3));
+        assert.isFalse(wordDistanceMap.reachable(endWord, 2));
+
+        // limit further...
+        wordDistanceMap = new WordDistanceMap(word, 3);
+        assert.strictEqual(wordDistanceMap.length, 345);
+        assert.isFalse(wordDistanceMap.contains(endWord))
+    })
 })

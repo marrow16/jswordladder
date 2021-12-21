@@ -58,7 +58,7 @@ module.exports = class Solver {
             this.#endWord = this.#puzzle.startWord;
         }
 
-        this.#endDistances = new WordDistanceMap(this.#endWord);
+        this.#endDistances = new WordDistanceMap(this.#endWord, this.#maximumLadderLength - 1);
         this.#startWord.links.forEach(linkedWord => {
             if (this.#endDistances.reachable(linkedWord, maximumLadderLength)) {
                 this.#solve(new CandidateSolution(this.#startWord, linkedWord));
