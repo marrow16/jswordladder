@@ -168,7 +168,7 @@ module.exports = class Interactive {
                 }
             }
             for (let s = 0; s < limit && (s + pageStart) < len; s++) {
-                console.log(`${s + pageStart + 1}/${len} ${sorted[s + pageStart].toString()}`);
+                console.log(`${s + pageStart + 1}/${len} ${green(sorted[s + pageStart].toString())}`);
             }
             pageStart = pageStart + limit;
         }
